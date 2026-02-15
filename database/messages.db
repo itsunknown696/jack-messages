@@ -1,1 +1,21 @@
+-- database/setup.sql
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
 
+CREATE TABLE IF NOT EXISTS messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sender_name TEXT NOT NULL,
+    sender_email TEXT,
+    message TEXT NOT NULL,
+    reply TEXT,
+    is_read INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    replied_at DATETIME
+);
+
+-- Insert Jack's login (password: 123409876)
+INSERT INTO users (username, password) 
+VALUES ('Jack-Sparrow', '$2y$10$YourHashedPasswordHere');
